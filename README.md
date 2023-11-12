@@ -4,7 +4,7 @@ Surveyor can create a survey with a list of Questions. Questions can be open-end
 
 ## Authors
 - Waleed Majbour 101144882
-- Mohammad Al-Khaledi 
+- Mohammad Al-Khaledi 101162465
 - Khalid Merai 101159203
 - Marina Latif
 
