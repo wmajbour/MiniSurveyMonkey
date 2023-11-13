@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn clean install -DskipTests
+        run: mvn clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'BootlegSurveyMonkey'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_37169E1A0872437F85266F1F8CDA628A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2166C2DFA5BA4EE7B2052AA1F6E06309 }}
           package: '*.jar'
