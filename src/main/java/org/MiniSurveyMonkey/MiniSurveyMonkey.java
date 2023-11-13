@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.expression.spel.ast.OpEQ;
 
 @SpringBootApplication(scanBasePackages = "org.MiniSurveyMonkey")
 
@@ -38,8 +39,11 @@ public class MiniSurveyMonkey {
 
             OpenEnded oeq1 = new OpenEnded("Testing Question String");
 
-            Survey survey1 = new Survey("Survey 1", new ArrayList<>(Arrays.asList(mcq1)));
-            repository.save((survey1));
+            Survey surveyMC = new Survey("Survey for Multiple Choice Questions", new ArrayList<>(Arrays.asList(mcq1, mcq2)));
+            repository.save((surveyMC));
+
+            Survey surveyOE = new Survey("Survey for Open Ended Questions", new ArrayList<>(Arrays.asList(oeq1)));
+            repository.save((surveyOE));
 
             log.info("Surveys");
             log.info("-----------");
