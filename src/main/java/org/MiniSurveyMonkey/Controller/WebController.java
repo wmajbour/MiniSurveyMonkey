@@ -2,6 +2,7 @@ package org.MiniSurveyMonkey.Controller;
 
 import org.MiniSurveyMonkey.Model.Survey;
 import org.MiniSurveyMonkey.Repo.SurveyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 public class WebController {
+    @Autowired
     private SurveyRepository repository;
 
     // Constructor Injection
