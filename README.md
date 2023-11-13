@@ -15,8 +15,4 @@ The team envisions incorporating user authentication, expanding data visualizati
 ### Milestone 1
 For this milestone...
 
-Khalid Merai: Created Survey.java to handle survey-related functionality.
-Implemented surveytest.java for testing.
-Developed three HTML files: user.html, about.html, and index.html.
-Help in the implementation of web controller and survey repository. fixed errors in the code.
-Configured azure into our github project.
+UML (Contains Model only(Class Diagram)) and ER diagram
