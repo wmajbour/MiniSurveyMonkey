@@ -1,6 +1,8 @@
 package org.MiniSurveyMonkey;
 
 import org.MiniSurveyMonkey.Model.MultipleChoice;
+import org.MiniSurveyMonkey.Model.NumRange;
+import org.MiniSurveyMonkey.Model.OpenEnded;
 import org.MiniSurveyMonkey.Model.Survey;
 import org.MiniSurveyMonkey.Repo.SurveyRepository;
 import org.slf4j.Logger;
@@ -15,9 +17,7 @@ import java.util.Arrays;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-
-
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "org.MiniSurveyMonkey")
 
 public class MiniSurveyMonkey {
 
@@ -31,8 +31,13 @@ public class MiniSurveyMonkey {
     public CommandLineRunner demo(SurveyRepository repository){
         return (args) -> {
 
-            MultipleChoice mcq1 = new MultipleChoice("Testing question string",
+            MultipleChoice mcq1 = new MultipleChoice("Testing question1 string",
                     new ArrayList<>(Arrays.asList("choice1", "choice2", "choice3")));
+            MultipleChoice mcq2 = new MultipleChoice("Testing question2 string",
+                    new ArrayList<>(Arrays.asList("choice1.2", "choice2.2", "choice3.2")));
+
+            OpenEnded oeq1 = new OpenEnded("Testing Question String");
+
             Survey survey1 = new Survey("Survey 1", new ArrayList<>(Arrays.asList(mcq1)));
             repository.save((survey1));
 
@@ -44,5 +49,4 @@ public class MiniSurveyMonkey {
             log.info("");
         };
     }
-
 }

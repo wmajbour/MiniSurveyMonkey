@@ -61,5 +61,4 @@
                 <!-- Change the scope to runtime if you intend to use H2 as your main database -->
             </dependency>
         </dependencies>
-    
 </project>

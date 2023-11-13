@@ -1,9 +1,7 @@
 package org.MiniSurveyMonkey.Model;
 
-import java.awt.image.BandedSampleModel;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 /**
  * Class to store numerical range style questions.
@@ -15,7 +13,7 @@ public class NumRange extends Question {
      */
     private int minRange;
     private int maxRange;
-    private String questionText;
+
     /**
      * Hashmap to take the question, and a range of integers from 1-10 for the selections.
      */
@@ -26,4 +24,30 @@ public class NumRange extends Question {
         this.answers = new HashMap<>();
     }
 
+    public NumRange(String question, int minRange, int maxRange){
+        super(question);
+        this.minRange = minRange;
+        this.maxRange = maxRange;
+        this.answers = new HashMap<>();
+    }
+
+    public int getMinRange() {
+        return minRange;
+    }
+
+    public int getMaxRange() {
+        return maxRange;
+    }
+
+    public HashMap<String, Integer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(HashMap<String, Integer> answers) {
+        this.answers = answers;
+    }
+
+    public void addAnswers(HashMap<String, Integer> answers){
+        this.answers.putAll(answers);
+    }
 }
