@@ -16,8 +16,8 @@ public class Survey {
     /**
      * The unique identifier for the survey.
      */
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     /**
