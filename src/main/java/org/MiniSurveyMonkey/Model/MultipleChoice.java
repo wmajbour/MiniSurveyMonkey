@@ -43,4 +43,5 @@ public class MultipleChoice extends Question{
         this.choices.put(choice, this.choices.get(choice) + 1);
     }
 
+
 }
