@@ -1,5 +1,6 @@
 package org.MiniSurveyMonkey.Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -12,14 +13,34 @@ public class MultipleChoice extends Question{
      * A minimum of one choice MUST be selected.
      * If none apply, have separate option; ex. "None of the above".
      */
-    private HashMap<String, Boolean> choices;
+    private HashMap<String, Integer> choices;
 
     /**
      * Constructor for multiple choice.
      */
     public MultipleChoice(){
         super();
-        this.choices = new HashMap<String, Boolean>();
+        this.choices = new HashMap<String, Integer>();
+    }
+
+    public HashMap<String, Integer> getChoices() {
+        return choices;
+    }
+
+    public void setChoices(HashMap<String, Integer> choices) {
+        this.choices = choices;
+    }
+
+    public MultipleChoice(String question, ArrayList<String> choices){
+        super(question);
+        this.choices = new HashMap<String, Integer>();
+        for(String choice: choices){
+            this.choices.put(choice,0);
+        }
+    }
+
+    public void addChoice(String choice){
+        this.choices.put(choice, this.choices.get(choice) + 1);
     }
 
 }

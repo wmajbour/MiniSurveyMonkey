@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 @SpringBootApplication
 public class MiniSurveyMonkey {
@@ -23,6 +26,9 @@ public class MiniSurveyMonkey {
     @Bean
     public CommandLineRunner demo(SurveyRepository repository){
         return (args) -> {
+
+            MultipleChoice mcq1 = new MultipleChoice("Testing question string",
+                    new ArrayList<String>(Arrays.asList("choice1", "choice2", "choice3")));
 
         };
     }
