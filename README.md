@@ -8,7 +8,7 @@ The team envisions incorporating user authentication, expanding data visualizati
 ## Authors
 - Waleed Majbour 101144882
 - Mohammad Al-Khaledi 101162465
-- Khalid Merai 101159203
+- Khalid Merai(Macbook) 101159203
 - Marina Latif
 
 ## Progress Reports
