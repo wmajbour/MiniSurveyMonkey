@@ -12,10 +12,13 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 
 @SpringBootApplication
+
 public class MiniSurveyMonkey {
 
     private static final Logger log = LoggerFactory.getLogger(MiniSurveyMonkey.class);
