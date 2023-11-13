@@ -15,19 +15,8 @@ The team envisions incorporating user authentication, expanding data visualizati
 ### Milestone 1
 For this milestone...
 
-Khalid Merai: Created Survey.java and surveytest.java.Also created the 3 html files user.html, about.html and index.html.
-
-
-## Scrums
-Khalid Merai: 
-What Have I Done This Week?
-Created Survey.java to handle survey-related functionality.
+Khalid Merai: Created Survey.java to handle survey-related functionality.
 Implemented surveytest.java for testing.
 Developed three HTML files: user.html, about.html, and index.html.
 Help in the implementation of web controller and survey repository. fixed errors in the code.
 Configured azure into our github project.
-What Will I Do Next Week?
-Continue refining and expanding the survey-related functionalities.
-Collaborate with team members to integrate HTML files with backend logic.
-What Is Holding Me Back?
-No significant blockers at the moment.
