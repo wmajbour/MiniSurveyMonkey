@@ -1,4 +1,6 @@
-package org.MiniSurveyMonkey.Model;
+package org.MiniSurveyMonkey.Controller;
+import org.MiniSurveyMonkey.Model.Survey;
+import org.MiniSurveyMonkey.Repo.SurveyRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
