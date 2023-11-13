@@ -1,7 +1,10 @@
 package org.MiniSurveyMonkey;
 
+import org.MiniSurveyMonkey.Model.MultipleChoice;
+import org.MiniSurveyMonkey.Repo.SurveyRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,5 +20,11 @@ public class MiniSurveyMonkey {
         SpringApplication.run(MiniSurveyMonkey.class, args);
     }
 
-    
+    @Bean
+    public CommandLineRunner demo(SurveyRepository repository){
+        return (args) -> {
+
+        };
+    }
+
 }
