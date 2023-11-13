@@ -9,7 +9,7 @@ The team envisions incorporating user authentication, expanding data visualizati
 - Waleed Majbour 101144882
 - Mohammad Al-Khaledi 101162465
 - Khalid Merai(Macbook) 101159203
-- Marina Latif
+- Marina Latif 101149148
 
 ## Progress Reports
 ### Milestone 1
