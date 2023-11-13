@@ -1,7 +1,6 @@
 package org.MiniSurveyMonkey;
 
 import org.MiniSurveyMonkey.Model.MultipleChoice;
-import org.MiniSurveyMonkey.Model.Question;
 import org.MiniSurveyMonkey.Model.Survey;
 import org.MiniSurveyMonkey.Repo.SurveyRepository;
 import org.slf4j.Logger;
@@ -10,11 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.view.tiles3.SpringWildcardServletTilesApplicationContext;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 
 
 @SpringBootApplication
@@ -31,8 +29,8 @@ public class MiniSurveyMonkey {
         return (args) -> {
 
             MultipleChoice mcq1 = new MultipleChoice("Testing question string",
-                    new ArrayList<String>(Arrays.asList("choice1", "choice2", "choice3")));
-            Survey survey1 = new Survey("Survey 1", new ArrayList<Question>(Arrays.asList(mcq1)));
+                    new ArrayList<>(Arrays.asList("choice1", "choice2", "choice3")));
+            Survey survey1 = new Survey("Survey 1", new ArrayList<>(Arrays.asList(mcq1)));
             repository.save((survey1));
 
             log.info("Surveys");
