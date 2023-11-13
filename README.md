@@ -20,3 +20,5 @@ Implemented surveytest.java for testing.
 Developed three HTML files: user.html, about.html, and index.html.
 Help in the implementation of web controller and survey repository. fixed errors in the code.
 Configured azure into our github project.
+
+UML and ER diagram
