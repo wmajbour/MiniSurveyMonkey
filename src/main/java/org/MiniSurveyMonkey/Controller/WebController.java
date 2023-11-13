@@ -41,16 +41,16 @@ public class WebController {
 */
 package org.MiniSurveyMonkey.Controller;
 
-        import org.MiniSurveyMonkey.Model.Survey;
-        import org.MiniSurveyMonkey.Repo.SurveyRepository;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.ui.Model;
-        import org.springframework.web.bind.annotation.GetMapping;
-        import org.springframework.web.bind.annotation.PostMapping;
-        import org.springframework.web.bind.annotation.RequestMapping;
+import org.MiniSurveyMonkey.Model.Survey;
+import org.MiniSurveyMonkey.Repo.SurveyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-        import java.util.List;
+import java.util.List;
 
 @Controller
 @RequestMapping("/surveys")
@@ -67,7 +67,7 @@ public class WebController {
     public String getAllSurveys(Model model) {
         List<Survey> surveys = (List<Survey>) repository.findAll();
         model.addAttribute("surveys", surveys);
-        return "surveyList"; 
+        return "surveyList";
     }
 
     @GetMapping("/add")
