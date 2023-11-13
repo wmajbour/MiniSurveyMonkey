@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <!-- Required meta tags -->
@@ -12,27 +12,36 @@
 
     <title>About Us | MiniSurveyMonkey</title>
 
+    <!-- Add your custom styles here -->
+    <link rel="stylesheet" href="styles.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="your-unique-app.js"></script>
 </head>
 
-<body>
-<div>
-    <nav class="py-2 bg-light border-bottom">
-        <div class="container d-flex flex-wrap">
-            <ul class="nav me-auto">
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <!-- Remove the "Mini-SurveyMonkey" brand -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item"><a href="home.html" class="nav-link link-dark px-2">Home</a></li>
                 <li class="nav-item"><a href="./about.html" class="nav-link link-dark px-2 active"
                                         aria-current="page">About Us</a></li>
             </ul>
-            <ul class="nav">
-                <li class="nav-item"><a href="user.html" class="nav-link link-dark px-2">User</a></li>
-                <li class="nav-item"><a href="surveyor.html" class="nav-link link-dark px-2">Surveyor</a></li>
-            </ul>
         </div>
-    </nav>
-    <h1 class='display-5 text-center mt-3 pt-3'>About Us</h1>
-    <p class='text-center mt-3 pt-3'>Refer to our GitHub page for more information: <a href="https://github.com/wmajbour/MiniSurveyMonkey">https://github.com/wmajbour/MiniSurveyMonkey</a></p>
+    </div>
+</nav>
+
+<div class="container mt-3 pt-3">
+    <h1 class='display-5 text-center'>About Us</h1>
+    <p class='text-center mt-3 pt-3'>Refer to our GitHub page for more information: <a
+            href="https://github.com/wmajbour/MiniSurveyMonkey">https://github.com/wmajbour/MiniSurveyMonkey</a></p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
