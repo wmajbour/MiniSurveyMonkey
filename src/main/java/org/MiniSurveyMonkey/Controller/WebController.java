@@ -67,12 +67,12 @@ public class WebController {
     public String getAllSurveys(Model model) {
         List<Survey> surveys = (List<Survey>) repository.findAll();
         model.addAttribute("surveys", surveys);
-        return "surveyList"; // Assuming you have an HTML template named "surveyList.html"
+        return "surveyList"; 
     }
 
     @GetMapping("/add")
     public String showAddSurveyForm() {
-        return "addSurvey"; // Assuming you have an HTML template named "addSurvey.html"
+        return "addSurvey";
     }
 
     @PostMapping("/add")
