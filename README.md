@@ -24,7 +24,8 @@ What Have I Done This Week?
 Created Survey.java to handle survey-related functionality.
 Implemented surveytest.java for testing.
 Developed three HTML files: user.html, about.html, and index.html.
-Help in the implementation of web controller and survey repository. fixed errors in the code
+Help in the implementation of web controller and survey repository. fixed errors in the code.
+Configured azure into our github project.
 What Will I Do Next Week?
 Continue refining and expanding the survey-related functionalities.
 Collaborate with team members to integrate HTML files with backend logic.
