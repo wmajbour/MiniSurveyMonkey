@@ -14,3 +14,5 @@ The team envisions incorporating user authentication, expanding data visualizati
 ## Progress Reports
 ### Milestone 1
 For this milestone...
+
+Khalid Merai: Created Survey.java and surveytest.java. Also created the 3 html files user,about and index.html
