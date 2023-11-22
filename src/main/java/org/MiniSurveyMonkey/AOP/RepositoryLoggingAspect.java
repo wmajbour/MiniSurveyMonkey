@@ -8,6 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * Aspect Logger Class
+ */
+
 @Aspect
 @Component
 public class RepositoryLoggingAspect {
