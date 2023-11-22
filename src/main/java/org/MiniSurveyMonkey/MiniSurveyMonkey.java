@@ -56,7 +56,7 @@ public class MiniSurveyMonkey {
                 log.info("Survey ID: {}", survey.getId());
                 log.info("Survey Name: {}", survey.getName());
 
-                for (Object question : survey.getQuestions()) {
+                /*for (Object question : survey.getQuestions()) {
                     if (question instanceof MultipleChoice) {
                         log.info("Multiple Choice Question: {}", ((MultipleChoice) question).getQuestion());
                         log.info("Choices: {}", ((MultipleChoice) question).getChoices());
@@ -69,7 +69,7 @@ public class MiniSurveyMonkey {
                     }
 
                     log.info("---------------------");
-                }
+                }*/
 
                 log.info(""); // Add a separator between surveys
             }
