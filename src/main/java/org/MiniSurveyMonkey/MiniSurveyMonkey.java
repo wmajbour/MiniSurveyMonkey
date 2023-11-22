@@ -14,9 +14,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.expression.spel.ast.OpEQ;
+import java.util.List;
+
 
 @SpringBootApplication(scanBasePackages = "org.MiniSurveyMonkey")
 
@@ -29,7 +28,7 @@ public class MiniSurveyMonkey {
     }
 
     @Bean
-    public CommandLineRunner demo(SurveyRepository repository){
+    public CommandLineRunner demo(SurveyRepository repository) {
         return (args) -> {
 
             MultipleChoice mcq1 = new MultipleChoice("Testing question1 string",
@@ -39,12 +38,46 @@ public class MiniSurveyMonkey {
 
             OpenEnded oeq1 = new OpenEnded("Testing Question String");
 
-            Survey surveyMC = new Survey("Survey for Multiple Choice Questions", new ArrayList<>(Arrays.asList(mcq1, mcq2)));
+            NumRange nrq1 = new NumRange("Question", 1, 10);
+
+            Survey surveyMC = new Survey("Survey for Multiple Choice Questions", new
+                    ArrayList<>(Arrays.asList(mcq1, mcq2)));
             repository.save((surveyMC));
 
-            Survey surveyOE = new Survey("Survey for Open Ended Questions", new ArrayList<>(Arrays.asList(oeq1)));
+            Survey surveyOE = new Survey("Survey for Open Ended Questions",
+                    new ArrayList<>(List.of(oeq1)));
             repository.save((surveyOE));
 
+            Survey surveyNR = new Survey("Survey for Numerical Range Questions",
+                    new ArrayList<>(List.of(nrq1)));
+            repository.save((surveyNR));
+
+            for (Survey survey : repository.findAll()) {
+                log.info("Survey ID: {}", survey.getId());
+                log.info("Survey Name: {}", survey.getName());
+
+                for (Object question : survey.getQuestions()) {
+                    if (question instanceof MultipleChoice) {
+                        log.info("Multiple Choice Question: {}", ((MultipleChoice) question).getQuestion());
+                        log.info("Choices: {}", ((MultipleChoice) question).getChoices());
+                    } else if (question instanceof OpenEnded) {
+                        log.info("Open Ended Question: {}", ((OpenEnded) question).getQuestion());
+                    } else if (question instanceof NumRange) {
+                        log.info("Numerical Range Question: {}", ((NumRange) question).getQuestion());
+                        log.info("Min Value: {}", ((NumRange) question).getMinRange());
+                        log.info("Max Value: {}", ((NumRange) question).getMaxRange());
+                    }
+
+                    log.info("---------------------");
+                }
+
+                log.info(""); // Add a separator between surveys
+            }
+        };
+    }
+};
+
+    /**
             log.info("Surveys");
             log.info("-----------");
             for(Survey survey: repository.findAll()){
@@ -53,4 +86,4 @@ public class MiniSurveyMonkey {
             log.info("");
         };
     }
-}
+}*/
