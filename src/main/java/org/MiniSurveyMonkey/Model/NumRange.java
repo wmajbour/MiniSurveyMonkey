@@ -47,7 +47,18 @@ public class NumRange extends Question {
         this.answers = answers;
     }
 
-    public void addAnswers(HashMap<String, Integer> answers){
-        this.answers.putAll(answers);
+    /**
+     * Adds an answer to the answers HashMap if it is within the specified range.
+     *
+     * @param key    The unique key for the answer (e.g., user ID).
+     * @param answer The answer to be added.
+     * @return true if the answer is within range, false otherwise.
+     */
+    public boolean addAnswer(String key, int answer) {
+        if (answer >= minRange && answer <= maxRange) {
+            answers.put(key, answer);
+            return true;
+        }
+        return false;
     }
 }
