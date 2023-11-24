@@ -14,14 +14,17 @@ public class MultipleChoice extends Question{
      * If none apply, have separate option; ex. "None of the above".
      */
     private HashMap<String, Integer> choices;
+    private static final QuestionType questionType = QuestionType.MULTIPLE_CHOICE;
 
     /**
-     * Constructor for multiple choice.
+     * Default constructor
      */
-    public MultipleChoice(){
+    public MultipleChoice() {
         super();
-        this.choices = new HashMap<String, Integer>();
+        this.choices = new HashMap<String,Integer>();
     }
+
+
 
     public HashMap<String, Integer> getChoices() {
         return choices;
@@ -40,8 +43,16 @@ public class MultipleChoice extends Question{
     }
 
     public void addChoice(String choice){
-        this.choices.put(choice, this.choices.get(choice) + 1);
+        if (!this.choices.containsKey(choice)) {
+            this.choices.put(choice, 1);
+        } else {
+            this.choices.put(choice, this.choices.get(choice) + 1);
+        }
     }
 
 
+
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
 }
