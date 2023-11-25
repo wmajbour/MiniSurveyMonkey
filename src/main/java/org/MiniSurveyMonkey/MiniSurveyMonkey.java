@@ -55,35 +55,8 @@ public class MiniSurveyMonkey {
             for (Survey survey : repository.findAll()) {
                 log.info("Survey ID: {}", survey.getId());
                 log.info("Survey Name: {}", survey.getName());
-
-                /*for (Object question : survey.getQuestions()) {
-                    if (question instanceof MultipleChoice) {
-                        log.info("Multiple Choice Question: {}", ((MultipleChoice) question).getQuestion());
-                        log.info("Choices: {}", ((MultipleChoice) question).getChoices());
-                    } else if (question instanceof OpenEnded) {
-                        log.info("Open Ended Question: {}", ((OpenEnded) question).getQuestion());
-                    } else if (question instanceof NumRange) {
-                        log.info("Numerical Range Question: {}", ((NumRange) question).getQuestion());
-                        log.info("Min Value: {}", ((NumRange) question).getMinRange());
-                        log.info("Max Value: {}", ((NumRange) question).getMaxRange());
-                    }
-
-                    log.info("---------------------");
-                }*/
-
                 log.info(""); // Add a separator between surveys
             }
         };
     }
-};
-
-    /**
-            log.info("Surveys");
-            log.info("-----------");
-            for(Survey survey: repository.findAll()){
-                log.info(survey.getId().toString());
-            }
-            log.info("");
-        };
-    }
-}*/
+}
