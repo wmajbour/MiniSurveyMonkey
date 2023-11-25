@@ -1,4 +1,4 @@
-/*import org.MiniSurveyMonkey.Controller.WebController;
+import org.MiniSurveyMonkey.Controller.WebController;
 import org.MiniSurveyMonkey.Model.MultipleChoice;
 import org.junit.jupiter.api.Test;
 import org.MiniSurveyMonkey.Model.Survey;
@@ -67,4 +67,3 @@ public class WebControllerTest {
         verify(repository).save(new Survey("New Survey"));
     }
 }
-*/
