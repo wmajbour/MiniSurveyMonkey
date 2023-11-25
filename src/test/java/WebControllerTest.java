@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import static org.mockito.Mockito.verify;
+
 @WebMvcTest(WebController.class)
 @AutoConfigureMockMvc
 public class WebControllerTest {
@@ -33,16 +35,16 @@ public class WebControllerTest {
         survey.setName("Sample Survey");
 
         // Stubbing
-        repository.save(survey);
         MultipleChoice mcq1 = new MultipleChoice("Testing question string",
                 new ArrayList<>(Arrays.asList("choice1", "choice2", "choice3")));
-        repository.save(new Survey("Another survey", new ArrayList<>(Arrays.asList(mcq1))));
+        Survey anotherSurvey = new Survey("Another survey", new ArrayList<>(Arrays.asList(mcq1)));
+        repository.save(anotherSurvey);
 
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/surveys"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("surveyList"))
-                .andExpect(MockMvcResultMatchers.model().attribute("surveys", Collections.singletonList(survey)));
+                .andExpect(MockMvcResultMatchers.model().attribute("surveys", Collections.singletonList(anotherSurvey)));
     }
 
     @Test
@@ -60,6 +62,8 @@ public class WebControllerTest {
                         .param("name", "New Survey"))
                 .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/surveys"));
-        Iterable<Survey> savedSurveys = repository.findAll();
+
+        // Verify that repository.save was called with the expected arguments
+        verify(repository).save(new Survey("New Survey"));
     }
 }

@@ -40,6 +40,7 @@ public class MultipleChoice extends Question{
     }
 
     public void addChoice(String choice){
+
         this.choices.put(choice, this.choices.get(choice) + 1);
     }
 

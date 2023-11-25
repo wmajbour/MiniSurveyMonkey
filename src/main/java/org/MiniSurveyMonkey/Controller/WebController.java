@@ -53,8 +53,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/surveys")
+@Controller
+@RequestMapping("/")
 public class WebController {
 
     private final SurveyRepository repository;
@@ -64,7 +64,17 @@ public class WebController {
         this.repository = surveyRepository;
     }
 
-    @GetMapping
+    @GetMapping("/home")
+    public String showHomePage() {
+        return "home";
+    }
+
+    @GetMapping("/about")
+    public String showAboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/surveys")
     public String getAllSurveys(Model model) {
         List<Survey> surveys = (List<Survey>) repository.findAll();
         model.addAttribute("surveys", surveys);
