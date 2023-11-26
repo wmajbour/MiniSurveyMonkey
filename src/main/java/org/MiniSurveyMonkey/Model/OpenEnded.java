@@ -1,9 +1,11 @@
 package org.MiniSurveyMonkey.Model;
 
+import jakarta.persistence.Entity;
+
 /**
  * Class to store open-ended style questions.
  */
-
+@Entity
 public class OpenEnded extends Question {
 
     private String answers;
