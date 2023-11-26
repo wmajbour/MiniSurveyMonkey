@@ -22,6 +22,7 @@ public class OpenEnded extends Question {
         this.answers = new String();
     }
 
+
     public String getAnswers() {
         return answers;
     }
