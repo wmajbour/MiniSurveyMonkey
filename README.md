@@ -15,4 +15,6 @@ The team envisions incorporating user authentication, expanding data visualizati
 ### Milestone 1
 For this milestone...
 
-UML (Contains Model only(Class Diagram)) and ER diagram
+UML Class Diagram 
+
+![UML_M2](https://github.com/wmajbour/MiniSurveyMonkey/assets/114357108/874f5fab-5674-46de-b777-d14319292f31)
