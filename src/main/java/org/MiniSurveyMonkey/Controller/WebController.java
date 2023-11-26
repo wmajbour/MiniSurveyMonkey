@@ -64,7 +64,7 @@ public class WebController {
         this.repository = surveyRepository;
     }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String showHomePage() {
         return "home";
     }
@@ -81,14 +81,14 @@ public class WebController {
         return "surveyList";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/surveyor/SurveyCreator")
     public String showAddSurveyForm() {
-        return "addSurvey";
+        return "SurveyCreator";
     }
 
-    @PostMapping("/add")
-    public String addSurvey(Survey survey) {
-        repository.save(survey);
-        return "redirect:/surveys";
+    @GetMapping("/surveyor")
+    public String showSurveyor() {
+        return "Surveyor";
     }
+
 }
