@@ -44,19 +44,25 @@ public class WebController {
         return "about";
     }
 
-    @GetMapping("/user")
-    public String openSurveys(){
-        return "user";
-    }
-    
-    @GetMapping("/testsurveyview")
-    public String testSurveyView(Model model){
+    @GetMapping("/user/surveyView")
+    public String surveyViewForUser(Model model){
         Survey survey = repository.findById(1);
         model.addAttribute(survey);
         return "SurveyView";
     }
-    @GetMapping("/testsurveypreviewview")
-    public String testSurveyPreviewView(Model model){
+
+    @GetMapping("/user/showSurveys")
+    public String showSurveysForUser(Model model){
+        List<Survey> surveys = new ArrayList<>();
+        for (Survey survey : repository.findAll()){
+            surveys.add(survey);
+        }
+        model.addAttribute("surveys", surveys);
+        return "PrintSurveysForUser";
+    }
+
+    @GetMapping("/surveyor/PrintSurveys/surveyorPreview")
+    public String surveyorPreview(Model model){
         Survey survey = repository.findById(1);
         model.addAttribute(survey);
         return "SurveyPreviewView";
@@ -90,6 +96,7 @@ public class WebController {
 
     @DeleteMapping("/survey/{surveyId}/close")
     public void deleteSurvey(@PathVariable(value="surveyId") int surveyId){repository.deleteById(surveyId);}
+
 
     @PostMapping("/surveyor/{surveyId}/close")
     public Survey closeAndSaveSurvey(@PathVariable(value = "surveyId") int surveyId){
