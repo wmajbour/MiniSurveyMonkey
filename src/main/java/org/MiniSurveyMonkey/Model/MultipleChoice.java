@@ -5,51 +5,49 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
  * Class to store multiple choice style questions.
  */
-@SuppressWarnings("JpaAttributeTypeInspection")
 @Entity
 public class MultipleChoice extends Question{
 
     /**
-     * Hashmap that takes a string for the choice and a boolean to check if it is checked.
+     * Set that takes a string for the choice and a Integer to check if it is checked.
      * A minimum of one choice MUST be selected.
      * If none apply, have separate option; ex. "None of the above".
      */
-
-
-    private HashMap<String, Integer> choices;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "multiple_choice_question_id")
+    private Set<Choice> choices;
 
     /**
      * Constructor for multiple choice.
      */
     public MultipleChoice(){
         super();
-        this.choices = new HashMap<String, Integer>();
+        this.choices = new HashSet<>();
     }
 
-    public HashMap<String, Integer> getChoices() {
+    public Set<Choice> getChoices() {
         return choices;
     }
 
-    public void setChoices(HashMap<String, Integer> choices) {
+    public void setChoices(Set<Choice> choices) {
         this.choices = choices;
     }
 
-    public MultipleChoice(String question, ArrayList<String> choices){
+    public MultipleChoice(String question, Set<Choice> choices){
         super(question);
-        this.choices = new HashMap<String, Integer>();
-        for(String choice: choices){
-            this.choices.put(choice,0);
-        }
+        this.choices = choices;
     }
 
-    public void addChoice(String choice){
-
-        this.choices.put(choice, this.choices.get(choice) + 1);
+    public void addChoice(Choice choice){
+        choices.add(choice);
     }
 
 

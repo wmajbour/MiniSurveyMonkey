@@ -1,38 +1,47 @@
 package org.MiniSurveyMonkey.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-import java.util.HashMap;
 
 
 /**
  * Class to store numerical range style questions.
  */
-@SuppressWarnings("JpaAttributeTypeInspection")
+
 @Entity
+@Table(name = "num_range")
 public class NumRange extends Question {
 
     /**
      * Setting a minimum and maximum range for choices.
      */
+    @Column(name = "min_range")
     private int minRange;
+    @Column(name = "max_range")
     private int maxRange;
 
     /**
-     * Hashmap to take the question, and a range of integers from 1-10 for the selections.
+     * number chosen by user. value is obtained using the number input HTML
+     * element.
+     * Set as 0 by default.
      */
-    private HashMap<String, Integer> answers;
+    @Column(name = "value_column")
+    private int value;
+
 
     public NumRange(){
         super();
-        this.answers = new HashMap<>();
+        value = 0;
     }
 
     public NumRange(String question, int minRange, int maxRange){
         super(question);
         this.minRange = minRange;
         this.maxRange = maxRange;
-        this.answers = new HashMap<>();
+        value = 0;
+
     }
 
     public int getMinRange() {
@@ -43,15 +52,12 @@ public class NumRange extends Question {
         return maxRange;
     }
 
-    public HashMap<String, Integer> getAnswers() {
-        return answers;
+    public int getValue() {
+        return value;
     }
 
-    public void setAnswers(HashMap<String, Integer> answers) {
-        this.answers = answers;
+    public void setValue(int value) {
+        this.value = value;
     }
 
-    public void addAnswers(HashMap<String, Integer> answers){
-        this.answers.putAll(answers);
-    }
 }
