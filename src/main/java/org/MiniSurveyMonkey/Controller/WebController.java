@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/")
@@ -47,6 +47,19 @@ public class WebController {
     @GetMapping("/user")
     public String openSurveys(){
         return "user";
+    }
+    
+    @GetMapping("/testsurveyview")
+    public String testSurveyView(Model model){
+        Survey survey = repository.findById(1);
+        model.addAttribute(survey);
+        return "SurveyView";
+    }
+    @GetMapping("/testsurveypreviewview")
+    public String testSurveyPreviewView(Model model){
+        Survey survey = repository.findById(1);
+        model.addAttribute(survey);
+        return "SurveyPreviewView";
     }
 
     @GetMapping("/surveyor/SurveyCreator")

@@ -12,7 +12,26 @@ The team envisions incorporating user authentication, expanding data visualizati
 - Marina Latif 101149148
 
 ## Progress Reports
-### UML Diagram and ER diagram
+
+### Milestone 1
+Basic application classes were created.
+Entities and Controllers instintiated for future milestones, along with basic front end views for each page required in the application.
+
+### Milestone 2
+Initialized database to store suverys and survey questions.
+
+Created application logger and refactored question classes to accommodate Hibernate data types. 
+
+Initialized front-end functions to fetch endpoints across the application; this is applicable for creating a survey, deleting a survey, viewing surveys etc.
+
+Repositories were expanded and additional queries were taken into account for storing sub-data like question types and responses.
+
+Azure deployment was reconfigured to take into account new classes and functionalities that may deem it unresponsive.
+
+Integration tests, along with updated UML and ER diagrams were added.
+
+
+## UML Diagram and ER diagram
 
 UML Diagram
 ![UML_M2](https://github.com/wmajbour/MiniSurveyMonkey/assets/114357108/560560dd-4efa-4905-baab-5f9ee3d87965)

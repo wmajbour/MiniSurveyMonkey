@@ -22,7 +22,7 @@ public class OpenEnded extends Question {
     }
 
     public OpenEnded(String question){
-        super(question);
+        super(question, "open-ended");
         this.answers = new String();
     }
 

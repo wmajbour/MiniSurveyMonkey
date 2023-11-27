@@ -40,7 +40,7 @@ public class NumRange extends Question {
     }
 
     public NumRange(String question, int minRange, int maxRange){
-        super(question);
+        super(question, "num-range");
         this.minRange = minRange;
         this.maxRange = maxRange;
         value = 0;
