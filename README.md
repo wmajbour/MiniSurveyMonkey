@@ -13,11 +13,11 @@ The team envisions incorporating user authentication, expanding data visualizati
 
 ## Progress Reports
 
-###Milestone 1
+### Milestone 1
 Basic application classes were created.
 Entities and Controllers instintiated for future milestones, along with basic front end views for each page required in the application.
 
-###Milestone 2
+### Milestone 2
 Initialized database to store suverys and survey questions.
 Created application logger and refactored question classes to accommodate Hibernate data types. 
 Initialized front-end functions to fetch endpoints across the application; this is applicable for creating a survey, deleting a survey, viewing surveys etc.
