@@ -42,7 +42,7 @@ public class MultipleChoice extends Question{
     }
 
     public MultipleChoice(String question, Set<Choice> choices){
-        super(question);
+        super(question, "multiple-choice");
         this.choices = choices;
     }
 

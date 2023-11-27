@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/")
@@ -47,6 +47,13 @@ public class WebController {
             surveys.add(survey);
         }
         return surveys;
+    }
+    
+    @GetMapping("/testsurvey")
+    public String testSurvey(Model model){
+        Survey survey = repository.findById(1);
+        model.addAttribute(survey);
+        return "SurveyView";
     }
 
     @GetMapping("/surveyor/SurveyCreator")

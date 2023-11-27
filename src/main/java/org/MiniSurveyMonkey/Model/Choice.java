@@ -26,9 +26,9 @@ public class Choice {
     }
     
     
-    public Choice(String choice, Boolean valueChosen) {
+    public Choice(String choice, Boolean selected) {
         this.choice = choice;
-        this.selected = valueChosen;
+        this.selected = selected;
     }
 
     public Long getId() {

@@ -1,0 +1,65 @@
+body {
+  color: #F5F5F5;
+  background-color: #282a4b;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+header, footer {
+    text-align: center;
+}
+.heading {
+  font-family: Helvetica;
+}
+
+main {
+  background-color: #3e416d;
+  padding: 20px;
+  margin: 4vh auto;
+  font-family: Arial;
+  border: 3px solid #502882;
+  width: 30%;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+}
+
+input[type="number"],
+select,
+textarea,
+button {
+  background-color: #282a4b;
+  border-color: #502882;
+  color: #F5F5F5;
+  display: block;
+  margin: 1vh 0;
+}
+
+label,
+textarea {
+  display: block;
+}
+p {
+	padding: 0;
+	margin: 0;
+}
+
+label, p {
+	margin: 1vh 1vw;
+}
+
+textarea {
+	width: 100%;
+}
+
+button {
+  display: block;
+  margin: 1em 1vw;
+  height: 2em;
+  padding: auto;
+
+}
+
