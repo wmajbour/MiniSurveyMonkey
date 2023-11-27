@@ -39,7 +39,7 @@ public class MiniSurveyMonkey {
             NumRangeRepository nmRepo,
             OpenEndedRepository oeRepo) {
         return (args) -> {
-            
+
             var set1 = new HashSet<Choice>();
             var set2 = new HashSet<Choice>();
             set1.add(new Choice("Year 1",false));
@@ -51,7 +51,7 @@ public class MiniSurveyMonkey {
             set2.add(new Choice("Fall",false));
             set2.add(new Choice("Winter",false));
             MultipleChoice mcq1 = new MultipleChoice("Which was your favourite year of University?",
-            set1);
+                    set1);
             MultipleChoice mcq2 = new MultipleChoice("What season of the year is your favourite?",
                     set2);
             OpenEnded oeq1 = new OpenEnded("Do you like or dislike school? Explain.");

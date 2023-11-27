@@ -11,36 +11,90 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
   <title>User | mini-SurveyMonkey</title>
-  <link rel="icon" href="logo/icon.png">
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="listAllSurveys.js"></script>
-  <link rel="stylesheet" href="surveyor.css">
+
 </head>
 
 <body>
 <div>
-  <nav class="py-2 bg-light border-bottom">
-    <div class="container d-flex flex-wrap">
-      <ul class="nav me-auto">
-        <li class="nav-item"><a href="index.html" class="nav-link link-dark px-2 active"
-                                aria-current="page">Home</a></li>
-      </ul>
-      <ul class="nav">
-        <li class="nav-item"><a href="listAllSurveys.html" class="nav-link link-dark px-2">User</a></li>
-        <li class="nav-item"><a href="./surveyor.html" class="nav-link link-dark px-2">Surveyor</a></li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="#" style="color: #343a40;">Mini-SurveyMonkey</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/" style="color: #343a40;">Home</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 </div>
 <h1 class='display-5 text-center mt-3 pt-3'>Current Surveys</h1>
 <br>
-<div id="surveys">
-</div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+<div class="container mt-4">
+  <h1 class='display-5 text-center mb-4'>Current Surveys</h1>
+
+  <!-- Table to display surveys -->
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Survey ID</th>
+      <th scope="col">Survey Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through surveys and populate the table -->
+    <tr th:each="survey : ${surveys}" data-survey-id="${survey.id}">
+      <td th:text="${survey.id}"></td>
+      <td th:text="${survey.name}"></td>
+      <td th:style="${survey.open ? 'color: green;' : 'color: red;'}">
+        <span th:text="${survey.open ? 'OPEN' : 'CLOSED'}"></span>
+      </td>
+      <td>
+        <button class="btn btn-danger" onclick="closeAndRemoveSurvey(${survey.id})">Close</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function closeAndRemoveSurvey(surveyId) {
+      // Use AJAX to send a request to close the survey
+      $.ajax({
+        type: 'POST',
+        url: '/surveyor/' + surveyId + '/close',
+        success: function () {
+          // Find the survey element by ID
+          var surveyElement = $('#survey' + surveyId);
+
+          // Update the status text and styling
+          surveyElement.find('.survey-status').text('CLOSED').css('color', 'red');
+        },
+        error: function () {
+          alert('Failed to close the survey.');
+        },
+      });
+    }
+  </script>
+
+
+</div>
 </body>
 
 </html>
