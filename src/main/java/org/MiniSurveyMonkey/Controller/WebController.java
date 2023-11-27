@@ -48,12 +48,6 @@ public class WebController {
         return "about";
     }
 
-    @GetMapping("/user/surveyView")
-    public String surveyViewForUser(Model model){
-        Survey survey = repository.findById(1);
-        model.addAttribute(survey);
-        return "SurveyView";
-    }
 
     @GetMapping("/user/showSurveys")
     public String showSurveysForUser(Model model){
@@ -67,7 +61,7 @@ public class WebController {
 
     @GetMapping("/surveyor/PrintSurveys/surveyorPreview")
     public String surveyorPreview(Model model){
-        Survey survey = repository.findById(1);
+        Survey survey = repository.findById(2);
         model.addAttribute(survey);
         return "SurveyPreviewView";
     }
