@@ -19,8 +19,11 @@ Entities and Controllers instintiated for future milestones, along with basic fr
 
 ### Milestone 2
 Initialized database to store suverys and survey questions.
+
 Created application logger and refactored question classes to accommodate Hibernate data types. 
+
 Initialized front-end functions to fetch endpoints across the application; this is applicable for creating a survey, deleting a survey, viewing surveys etc.
+
 Repositories were expanded and additional queries were taken into account for storing sub-data like question types and responses.
 
 
