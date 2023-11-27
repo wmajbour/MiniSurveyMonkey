@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+    <head>
+        <title>Survey Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="SurveyForm.css">
+        <style>
+            body {
+                color: #F5F5F5;
+                background-color: #282a4b;
+                font-size: 20px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            header, footer {
+                text-align: center;
+            }
+            .heading {
+                font-family: Helvetica;
+            }
+
+            main {
+                background-color: #3e416d;
+                padding: 20px;
+                margin: 4vh auto;
+                font-family: Arial;
+                border: 3px solid #502882;
+                width: 30%;
+            }
+
+            form{
+                display: flex;
+                flex-direction: column;
+            }
+
+            input[type="number"],
+            select,
+            textarea,
+            button {
+                background-color: #282a4b;
+                border-color: #502882;
+                color: #F5F5F5;
+                display: block;
+                margin: 1vh 0;
+            }
+
+            label,
+            input[type="checkbox"] {
+                display: inline;
+            }
+
+            p {
+                padding: 0;
+                margin: 0;
+            }
+
+            label, p {
+                margin: 1vh 1vw;
+            }
+
+            textarea {
+                display: block;
+                width: 100%;
+            }
+
+            button {
+                display: block;
+                margin: 1em 1vw;
+                height: 2em;
+                padding: auto;
+                
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="heading">
+            <h1 id="title" th:text="${survey.name}"></h1>
+        </header>
+        <main>
+            <form id="survey-form">
+                <th:block th:each="question : ${survey.questions}">
+                    <th:block th:if="${question.type} == 'num-range'">
+                        <label th:for="${question.type} + ${question.id}" th:text="${question.question}"></label>
+                        <input type="number" th:id="${question.type} + ${question.id}" th:name="${question.type} + ${question.id}" th:min="${question.minRange}" th:max="${question.maxRange}">
+                    </th:block>
+                    <th:block th:if="${question.type} == 'multiple-choice'">
+                        <p th:text="${question.question}"></p>
+                        <th:block th:each="choice: ${question.choices}">
+                            <div>
+                                <label th:for="${question.type} + ${choice.id}" th:text="${choice.choice}"></label>
+                                <input type="checkbox" th:id="${question.type} + ${choice.id}" th:name="${question.type} + ${choice.id}" th:value="${choice.choice}">
+                            </div>
+                        </th:block>     
+                    </th:block>  
+                    <th:block th:if="${question.type} == 'open-ended'">
+                        <label th:for="${question.type} + ${question.id}" th:text="${question.question}"></label>
+                        <textarea th:id="${question.type} + ${question.id}" rows="3" cols="30"></textarea>
+                    </th:block>
+                </th:block>
+                <button type="submit" id="submit" onclick="alert('Normally, this would submit the survey!');">Submit</button>
+            </form>
+        </main>
+        <footer>
+            <p class="footer-text">© 2023 Mini-SurveyMonkey. All rights reserved.</p>
+        </footer>
+    </body>
+
+</html>
