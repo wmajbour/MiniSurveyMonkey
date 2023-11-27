@@ -49,11 +49,17 @@ public class WebController {
         return surveys;
     }
     
-    @GetMapping("/testsurvey")
-    public String testSurvey(Model model){
+    @GetMapping("/testsurveyview")
+    public String testSurveyView(Model model){
         Survey survey = repository.findById(1);
         model.addAttribute(survey);
         return "SurveyView";
+    }
+    @GetMapping("/testsurveypreviewview")
+    public String testSurveyPreviewView(Model model){
+        Survey survey = repository.findById(1);
+        model.addAttribute(survey);
+        return "SurveyPreviewView";
     }
 
     @GetMapping("/surveyor/SurveyCreator")
