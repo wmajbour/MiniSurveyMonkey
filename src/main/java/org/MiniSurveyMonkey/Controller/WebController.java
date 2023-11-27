@@ -37,7 +37,16 @@ public class WebController {
         this.nrqRepository = nrqRepository;
         this.oeqRepository = oeqRepository;
     }
-
+/*
+    @GetMapping("/user/showSurveys")
+    public String showSurveysForUser(Model model){
+        List<Survey> surveys = new ArrayList<>();
+        for (Survey survey : repository.findAll()){
+            surveys.add(survey);
+        }
+        model.addAttribute("surveys", surveys);
+        return "PrintSurveysForUser";
+    }
     @GetMapping("/")
     public String showHomePage() {
         return "home";
@@ -48,24 +57,25 @@ public class WebController {
         return "about";
     }
 
-    @GetMapping("/user")
-    public String openSurveys() {
-        return "user";
-    }
+  
 
-    @GetMapping("/testsurveyview")
-    public String testSurveyView(Model model) {
+    @GetMapping("/user/surveyView")
+    public String surveyViewForUser(Model model){
         Survey survey = repository.findById(1);
         model.addAttribute(survey);
         return "SurveyView";
     }
 
-    @GetMapping("/testsurveypreviewview")
-    public String testSurveyPreviewView(Model model) {
-        Survey survey = repository.findById(1);
-        model.addAttribute(survey);
-        return "SurveyPreviewView";
+    @GetMapping("/user/surveyView")
+    public String showSurveysForUser(Model model){
+        List<Survey> surveys = new ArrayList<>();
+        for (Survey survey : repository.findAll()){
+            surveys.add(survey);
+        }
+        model.addAttribute("surveys", surveys);
+        return "PrintSurveysForUser";
     }
+
 
     @GetMapping("/surveyor")
     public String showSurveyor() {
@@ -85,7 +95,61 @@ public class WebController {
     @GetMapping("/surveyor/SurveyCreator")
     public String showAddSurveyForm() {
         return "SurveyCreator";
+    }*/
+    @GetMapping("/")
+    public String showHomePage() {
+        return "home";
     }
+
+    @GetMapping("/about")
+    public String showAboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/user/surveyView")
+    public String surveyViewForUser(Model model){
+        Survey survey = repository.findById(1);
+        model.addAttribute(survey);
+        return "SurveyView";
+    }
+
+    @GetMapping("/user/showSurveys")
+    public String showSurveysForUser(Model model){
+        List<Survey> surveys = new ArrayList<>();
+        for (Survey survey : repository.findAll()){
+            surveys.add(survey);
+        }
+        model.addAttribute("surveys", surveys);
+        return "PrintSurveysForUser";
+    }
+
+    @GetMapping("/surveyor/PrintSurveys/surveyorPreview")
+    public String surveyorPreview(Model model){
+        Survey survey = repository.findById(1);
+        model.addAttribute(survey);
+        return "SurveyPreviewView";
+    }
+
+    @GetMapping("/surveyor/SurveyCreator")
+    public String showAddSurveyForm() {
+        return "SurveyCreator";
+    }
+
+    @GetMapping("/surveyor/PrintSurveys")
+    public String showCurrentSurveys(Model model){
+        List<Survey> surveys = new ArrayList<>();
+        for (Survey survey : repository.findAll()){
+            surveys.add(survey);
+        }
+        model.addAttribute("surveys", surveys);
+        return "PrintSurveys";
+    }
+
+    @GetMapping("/surveyor")
+    public String showSurveyor() {
+        return "Surveyor";
+    }
+
 
     @PostMapping("/surveyor/SurveyCreator/addmcq")
     public String addMcq(Model model, @RequestParam("mcq") String question,
