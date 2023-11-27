@@ -56,22 +56,5 @@ public abstract class Question {
         this.question = question;
     }
 
-    @JsonCreator
-    public static Question createQuestion(
-            @JsonProperty("question") String question,
-            @JsonProperty("type") String type,
-            @JsonProperty("lowerBound") Integer lowerBound,
-            @JsonProperty("upperBound") Integer upperBound) {
-
-        if ("MCQ".equals(type)) {
-            return new MultipleChoice();
-        } else if ("NumQ".equals(type)) {
-            return new NumRange(question, lowerBound, upperBound);
-        } else if ("OpenQ".equals(type)) {
-            return new OpenEnded(question);
-        } else {
-            throw new IllegalArgumentException("Unknown question type: " + type);
-        }
-    }
 
 }
