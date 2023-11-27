@@ -51,24 +51,21 @@
   <!-- Table to display surveys -->
   <table class="table">
     <thead>
-    <tr class="text-center">
-      <th scope="col">Survey ID</th>
+    <tr >
       <th scope="col">Survey Name</th>
       <th scope="col">Status</th>
       <th scope="col">Actions</th>
     </tr>
     </thead>
-    <tbody class="text-center">
+    <tbody >
     <!-- Loop through surveys and populate the table -->
     <tr th:each="survey : ${surveys}" th:id="'survey-' + ${survey.id}" data-survey-id="${survey.id}">
-      <td th:text="${survey.id}"></td>
       <td th:text="${survey.name}"></td>
       <td th:style="${survey.open ? 'color: green;' : 'color: red;'}">
         <span th:text="${survey.open ? 'OPEN' : 'CLOSED'}"></span>
       </td>
       <td>
-        <a class="btn btn-primary" href="PrintSurveys/surveyorPreview">View</a>
-        <button class="btn btn-danger" onclick="closeAndRemoveSurvey(${survey.id})">Close</button>
+        <a class="btn btn-secondary" href="surveyView">Open</a>
       </td>
     </tr>
     </tbody>
@@ -76,28 +73,7 @@
 
   <script>
 
-    function redirectToSurveyView(surveyId) {
-      // Redirect the user to the surveyView page
-      window.location.href = 'surveyor/PrintSurveys/surveyorPreview';
-    }
 
-    function closeAndRemoveSurvey(surveyId) {
-      // Use AJAX to send a request to close the survey
-      $.ajax({
-        type: 'POST',
-        url: '/surveyor/' + surveyId + '/close',
-        success: function () {
-          // Find the survey element by ID
-          var surveyElement = $('#survey' + surveyId);
-
-          // Update the status text and styling
-          surveyElement.find('.survey-status').text('CLOSED').css('color', 'red');
-        },
-        error: function () {
-          alert('Failed to close the survey.');
-        },
-      });
-    }
   </script>
 
 

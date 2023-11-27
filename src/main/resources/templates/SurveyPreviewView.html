@@ -71,15 +71,31 @@
                 margin: 1em 1vw;
                 height: 2em;
                 padding: auto;
-                
+
             }
         </style>
+
     </head>
 
     <body>
         <header class="heading">
             <h1 id="title" th:text="${survey.name}"></h1>
         </header>
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container">
+                    <a class="navbar-brand" href="#" style="color: #343a40;">Mini-SurveyMonkey</a>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/" style="color: #343a40;">Home</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <main>
             <form id="survey-form">
                 <th:block th:each="question : ${survey.questions}">
