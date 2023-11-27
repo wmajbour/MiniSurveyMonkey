@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import org.MiniSurveyMonkey.Model.Choice;
+import org.MiniSurveyMonkey.Model.Question;
 import org.MiniSurveyMonkey.Repo.MultipleChoiceRepository;
 import org.MiniSurveyMonkey.Repo.NumRangeRepository;
 import org.MiniSurveyMonkey.Repo.OpenEndedRepository;
@@ -38,44 +39,31 @@ public class MiniSurveyMonkey {
             NumRangeRepository nmRepo,
             OpenEndedRepository oeRepo) {
         return (args) -> {
-            Survey survey = new Survey();
-            repository.save(survey);
-            /*
+            
             var set1 = new HashSet<Choice>();
             var set2 = new HashSet<Choice>();
-            set1.add(new Choice("choice1",false));
-            set1.add(new Choice("choice2",false));
-            set1.add(new Choice("choice3",false));
-            set2.add(new Choice("choice4",false));
-            set2.add(new Choice("choice5",false));
-            set2.add(new Choice("choice6",false));
-            MultipleChoice mcq1 = new MultipleChoice("Testing question1 string",
+            set1.add(new Choice("Year 1",false));
+            set1.add(new Choice("Year 2",false));
+            set1.add(new Choice("Year 3",false));
+            set1.add(new Choice("Year 4",false));
+            set2.add(new Choice("Spring",false));
+            set2.add(new Choice("Summer",false));
+            set2.add(new Choice("Fall",false));
+            set2.add(new Choice("Winter",false));
+            MultipleChoice mcq1 = new MultipleChoice("Which was your favourite year of University?",
             set1);
-            MultipleChoice mcq2 = new MultipleChoice("Testing question2 string",
+            MultipleChoice mcq2 = new MultipleChoice("What season of the year is your favourite?",
                     set2);
-            mcqRepo.save(mcq1);
-            mcqRepo.save(mcq2);
-            OpenEnded oeq1 = new OpenEnded("Testing Question String");
-            oeRepo.save(oeq1);
-            NumRange nrq1 = new NumRange("Question", 1, 10);
-            nmRepo.save(nrq1);
-            Survey surveyMC = new Survey("Survey for Multiple Choice Questions", new
-                    ArrayList<>(Arrays.asList(mcq1, mcq2)));
-            repository.save(surveyMC);
+            OpenEnded oeq1 = new OpenEnded("Do you like or dislike school? Explain.");
+            NumRange nrq1 = new NumRange("Your age", 13, 100);
+            var qs = new ArrayList<Question>();
+            qs.add(mcq1);
+            qs.add(mcq2);
+            qs.add(oeq1);
+            qs.add(nrq1);
+            Survey survey = new Survey("School and Seasons Survey", qs);
+            repository.save(survey);
 
-            Survey surveyOE = new Survey("Survey for Open Ended Questions",
-                    new ArrayList<>(List.of(oeq1)));
-            repository.save(surveyOE);
-
-            Survey surveyNR = new Survey("Survey for Numerical Range Questions",
-                    new ArrayList<>(List.of(nrq1)));
-            repository.save((surveyNR));
-
-            for (Survey survey : repository.findAll()) {
-                log.info("Survey ID: {}", survey.getId());
-                log.info("Survey Name: {}", survey.getName());
-                log.info(""); // Add a separator between surveys
-            }*/
         };
     }
 }

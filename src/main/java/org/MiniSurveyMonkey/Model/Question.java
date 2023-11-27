@@ -16,13 +16,22 @@ public abstract class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String question;
+    private String type;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public Question() {}
 
 
-    public Question(String question) {
+    public Question(String question, String type) {
         this.question = question;
+        this.type = type;
     }
 
 
