@@ -38,9 +38,12 @@ public class MiniSurveyMonkey {
             NumRangeRepository nmRepo,
             OpenEndedRepository oeRepo) {
         return (args) -> {
-            Survey survey = new Survey();
-            repository.save(survey);
-            /*
+            Survey survey1 = new Survey();
+            repository.save(survey1);
+
+            Survey survey2 = new Survey();
+            repository.save(survey2);
+
             var set1 = new HashSet<Choice>();
             var set2 = new HashSet<Choice>();
             set1.add(new Choice("choice1",false));
@@ -51,30 +54,13 @@ public class MiniSurveyMonkey {
             set2.add(new Choice("choice6",false));
             MultipleChoice mcq1 = new MultipleChoice("Testing question1 string",
             set1);
-            MultipleChoice mcq2 = new MultipleChoice("Testing question2 string",
-                    set2);
-            mcqRepo.save(mcq1);
-            mcqRepo.save(mcq2);
-            OpenEnded oeq1 = new OpenEnded("Testing Question String");
-            oeRepo.save(oeq1);
-            NumRange nrq1 = new NumRange("Question", 1, 10);
-            nmRepo.save(nrq1);
-            Survey surveyMC = new Survey("Survey for Multiple Choice Questions", new
-                    ArrayList<>(Arrays.asList(mcq1, mcq2)));
-            repository.save(surveyMC);
 
-            Survey surveyOE = new Survey("Survey for Open Ended Questions",
-                    new ArrayList<>(List.of(oeq1)));
-            repository.save(surveyOE);
+            MultipleChoice mcq2 = new MultipleChoice("Testing question2 string", set2);
 
-            Survey surveyNR = new Survey("Survey for Numerical Range Questions",
-                    new ArrayList<>(List.of(nrq1)));
-            repository.save((surveyNR));
-
-            for (Survey survey : repository.findAll()) {
-                log.info("Survey ID: {}", survey.getId());
-                log.info("Survey Name: {}", survey.getName());
-                log.info(""); // Add a separator between surveys
+            /*log.info("Surveys Found:");
+            log.info("---------------");
+            for(Survey survey : repository.findAll()){
+                log.info(survey.getId().toString());
             }*/
         };
     }

@@ -3,10 +3,8 @@ package org.MiniSurveyMonkey.Model;
 import jakarta.persistence.*;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 
@@ -24,6 +22,9 @@ public class MultipleChoice extends Question{
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "multiple_choice_question_id")
     private Set<Choice> choices;
+
+    @ManyToOne
+    private Survey survey;
 
     /**
      * Constructor for multiple choice.

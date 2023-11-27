@@ -136,4 +136,8 @@ public class Survey {
     public void close() {
         this.open = false;
     }
+
+    public void addQuestion(Question question){
+        this.questions.add(question);
+    }
 }

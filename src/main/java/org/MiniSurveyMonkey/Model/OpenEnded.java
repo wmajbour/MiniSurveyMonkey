@@ -1,6 +1,7 @@
 package org.MiniSurveyMonkey.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 /**
  * Class to store open-ended style questions.
@@ -9,7 +10,8 @@ import jakarta.persistence.Entity;
 public class OpenEnded extends Question {
 
     private String answers;
-
+    @ManyToOne
+    private Survey survey;
 
     /**
      * Constructor for open-ended.
