@@ -274,13 +274,28 @@
         <div class="container">
             <div class="separator-line"></div>
             <div class="options-container"></div>
-            <form action="/surveyor/SurveyCreator/addSurvey" method="POST"> 
-                <label for='surveyName'>Name of Survey:</label>
-                <input type='text' id='surveyName' name="surveyName" required>
-                <button type="submit" class="createSurvey btn btn-outline-success">Create Survey</button>
+            <p th:text="${survey.name}"></p>
+            <form action="/surveyor/SurveyCreator/addnrq" method="POST">
+                <label for="nrq">Enter your question for the number-range question: <input type="text" id="nrq" name="nrq" required></label>
+                <label for="nrq-min">Enter lower limit for the number-range question: <input type="number" id="nrq-min" name="min" required></label>
+                <label for="nrq-max">Enter upper limit for the number-range question: <input type="number" id="nrq-max" name="max" required></label>
+                <input type="hidden" name="surveyId" th:value="${survey.id}">  
+                <button type="submit" class="new-NumQ btn btn-outline-secondary">Add Number-range Question</button>
             </form>
-
-
+            <form action="/surveyor/SurveyCreator/addoeq" method="POST">
+                <label for="open-ended">Enter your question for the open-ended question: <input type="text" id="open-ended" name="oeq" required></label>
+                <input type="hidden" name="surveyId" th:value="${survey.id}">  
+                <button type="submit" class="new-OpenQ btn btn-outline-secondary">Add Open-ended Question</button>
+            </form>
+            <form action="/surveyor/SurveyCreator/addmcq" method="POST">
+                <label for="mcq">Enter your question for the multiple-choice question: <input type="text" id="mcq" name="mcq" required></label>
+                <label for="mcq1">Possible Choice 1: <input type="text" id="mcq1" name="mcq1" required></label>
+                <label for="mcq2">Possible Choice 2: <input type="text" id="mcq2" name="mcq2" required></label>
+                <label for="mcq3">Possible Choice 3: <input type="text" id="mcq3" name="mcq3" required></label>
+                <label for="mcq4">Possible Choice 4: <input type="text" id="mcq4" name="mcq4" required></label>
+                <input type="hidden" name="surveyId" th:value="${survey.id}">  
+                <button type="submit" class="new-OpenQ btn btn-outline-secondary">Add Multiple-choice Question</button>
+            </form>
         </div>
 
 

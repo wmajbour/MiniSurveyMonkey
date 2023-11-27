@@ -11,11 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import org.MiniSurveyMonkey.Model.Choice;
 import org.MiniSurveyMonkey.Model.Question;
 import org.MiniSurveyMonkey.Repo.MultipleChoiceRepository;
