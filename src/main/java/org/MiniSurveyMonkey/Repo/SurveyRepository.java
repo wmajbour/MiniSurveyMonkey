@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @RepositoryRestResource(collectionResourceRel = "surveys", path = "surveys")
 public interface SurveyRepository extends CrudRepository<Survey, Integer> {
-    Optional<Survey> findById(Integer id);
+    Survey findById(@Param("id") int id);
 
 }

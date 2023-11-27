@@ -1,11 +1,17 @@
 package org.MiniSurveyMonkey.Model;
 
+import jakarta.persistence.*;
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 /**
  * Class to store multiple choice style questions.
  */
+@SuppressWarnings("JpaAttributeTypeInspection")
+@Entity
 public class MultipleChoice extends Question{
 
     /**
@@ -13,6 +19,8 @@ public class MultipleChoice extends Question{
      * A minimum of one choice MUST be selected.
      * If none apply, have separate option; ex. "None of the above".
      */
+
+
     private HashMap<String, Integer> choices;
 
     /**

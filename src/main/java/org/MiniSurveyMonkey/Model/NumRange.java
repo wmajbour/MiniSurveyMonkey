@@ -1,11 +1,15 @@
 package org.MiniSurveyMonkey.Model;
 
+import jakarta.persistence.Entity;
+
 import java.util.HashMap;
 
 
 /**
  * Class to store numerical range style questions.
  */
+@SuppressWarnings("JpaAttributeTypeInspection")
+@Entity
 public class NumRange extends Question {
 
     /**
