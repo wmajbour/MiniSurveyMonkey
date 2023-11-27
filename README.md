@@ -12,9 +12,8 @@ The team envisions incorporating user authentication, expanding data visualizati
 - Marina Latif 101149148
 
 ## Progress Reports
-### Milestone 1
-For this milestone...
+### UML Diagram and ER diagram
 
-UML Diagram and ER diagram
 ![UML_M2](https://github.com/wmajbour/MiniSurveyMonkey/assets/114357108/560560dd-4efa-4905-baab-5f9ee3d87965)
+![ER_M2](https://github.com/wmajbour/MiniSurveyMonkey/assets/114357108/c6868550-bd48-4d00-a114-58d19bdbf5d2)
 
