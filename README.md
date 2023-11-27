@@ -26,6 +26,10 @@ Initialized front-end functions to fetch endpoints across the application; this 
 
 Repositories were expanded and additional queries were taken into account for storing sub-data like question types and responses.
 
+Azure deployment was reconfigured to take into account new classes and functionalities that may deem it unresponsive.
+
+Integration tests, along with updated UML and ER diagrams were added.
+
 
 ## UML Diagram and ER diagram
 
