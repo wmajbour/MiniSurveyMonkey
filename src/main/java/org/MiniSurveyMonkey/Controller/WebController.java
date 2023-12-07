@@ -60,8 +60,8 @@ public class WebController {
     }
 
     @GetMapping("/surveyor/PrintSurveys/surveyorPreview")
-    public String surveyorPreview(Model model, @PathVariable int surveyId){
-        Survey survey = repository.findById(surveyId);
+    public String surveyorPreview(Model model){
+        Survey survey = repository.findById(2);
         model.addAttribute(survey);
         return "SurveyPreviewView";
     }
