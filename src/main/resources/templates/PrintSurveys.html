@@ -86,6 +86,8 @@
           // Update the status text and styling
           surveyElement.find('td:nth-child(3)').html('<span style="color: red;">CLOSED</span>');
 
+          alert('Survey closed successfully.');
+
           // Remove the "CLOSE" button
           surveyElement.find('td:last-child button').remove();
         },
