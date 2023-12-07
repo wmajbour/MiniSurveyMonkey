@@ -1,6 +1,7 @@
 import org.MiniSurveyMonkey.Controller.WebController;
 import org.MiniSurveyMonkey.Model.Choice;
 import org.MiniSurveyMonkey.Model.MultipleChoice;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.MiniSurveyMonkey.Model.Survey;
 import org.MiniSurveyMonkey.Repo.SurveyRepository;
@@ -82,5 +83,57 @@ public class WebControllerTest {
         verify(repository).save(new Survey("New Survey"));
     }
 
-    
+    @Test
+    public void testSurveyorPreview() throws Exception {
+        // Arrange
+        int surveyId = 1;
+
+        // Stubbing
+        Survey survey = new Survey();
+        repository.save(survey);
+
+        // Act & Assert
+        mockMvc.perform(MockMvcRequestBuilders.get("/surveyor/PrintSurveys/surveyorPreview/{surveyId}", surveyId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("SurveyPreviewView"))
+                .andExpect(MockMvcResultMatchers.model().attribute("survey", survey));
+    }
+
+    @Test
+    public void testAnswerSurvey() throws Exception {
+        // Arrange
+        int surveyId = 1;
+
+        // Stubbing
+        Survey survey = new Survey();
+        repository.save(survey);
+
+        // Act & Assert
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/surveyView/{surveyId}", surveyId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("SurveyView"))
+                .andExpect(MockMvcResultMatchers.model().attribute("survey", survey));
+    }
+
+    @Test
+    public void testCloseAndSaveSurvey() throws Exception {
+        // Arrange
+        int surveyId = 1;
+
+        // Stubbing
+        Survey survey = new Survey();
+        repository.save(survey);
+
+        // Act & Assert
+        mockMvc.perform(MockMvcRequestBuilders.post("/surveyor/{surveyId}/close", surveyId))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Survey closed successfully."));
+
+        // Verify that closeAndSaveSurvey method was called with the expected argument
+        Survey closedSurvey = repository.findById(surveyId);
+        Assertions.assertNotNull(closedSurvey);
+        Assertions.assertFalse(closedSurvey.isOpen());
+    }
 }
+
+
