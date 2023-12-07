@@ -61,12 +61,12 @@ public class WebController {
 
     @GetMapping("/surveyor/PrintSurveys/surveyorPreview")
     public String surveyorPreview(Model model) {
-        Survey survey = repository.findById(2);
+        Survey survey = repository.findById(1);
         model.addAttribute(survey);
         return "SurveyPreviewView";
     }
 
-    @GetMapping("/user/surveyView")
+    @GetMapping("/user/surveyView/{surveyId}")
     public String answerSurvey(Model model, @PathVariable int surveyId) {
         Survey survey = repository.findById(surveyId);
         model.addAttribute(survey);
@@ -150,11 +150,10 @@ public class WebController {
     }
 
     @PostMapping("/surveyor/{surveyId}/close")
-    @ResponseBody
-    public ResponseEntity<String> closeAndSaveSurvey(@PathVariable(value = "surveyId") int surveyId) {
+    public String closeAndSaveSurvey(@PathVariable(value = "surveyId") int surveyId) {
         Survey survey = repository.findById(surveyId);
         survey.close();
         repository.save(survey);
-        return ResponseEntity.ok("Survey closed successfully.");
+        return "SurveyResults";
     }
 }
