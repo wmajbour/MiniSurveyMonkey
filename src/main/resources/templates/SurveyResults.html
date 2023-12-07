@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Survey Results</title>
+  <!-- Include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Container for the charts -->
+<div style="max-width: 600px; margin: auto;">
+  <canvas id="chartCanvas"></canvas>
+</div>
+
+<script>
+  // Sample data for demonstration purposes
+  const questionType = "num-range"; // Replace with actual question type (e.g., "num-range" or "multiple-choice")
+  const responseData = [3, 5, 2, 8, 4]; // Replace with actual response data
+
+  // Function to create a histogram
+  function createHistogram(data) {
+    const ctx = document.getElementById('chartCanvas').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data.map((_, index) => `Response ${index + 1}`),
+        datasets: [{
+          label: 'Number Question Responses',
+          data: data,
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+  // Function to create a pie chart
+  function createPieChart(data) {
+    const ctx = document.getElementById('chartCanvas').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: data.map((_, index) => `Option ${index + 1}`),
+        datasets: [{
+          data: data,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+  }
+
+  // Determine the question type and create the corresponding chart
+  if (questionType === "num-range") {
+    createHistogram(responseData);
+  } else if (questionType === "multiple-choice") {
+    createPieChart(responseData);
+  } else {
+    console.error("Unsupported question type");
+  }
+</script>
+
+</body>
+</html>
