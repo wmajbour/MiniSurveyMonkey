@@ -27,7 +27,7 @@ public class MultipleChoice extends Question{
     private Survey survey;
 
     /**
-     * Constructor for multiple choice.
+     * Constructor for multiple cho e.
      */
     public MultipleChoice(){
         super();

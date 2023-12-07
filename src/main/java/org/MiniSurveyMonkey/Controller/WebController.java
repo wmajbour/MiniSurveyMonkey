@@ -9,14 +9,14 @@ import org.MiniSurveyMonkey.Repo.NumRangeRepository;
 import org.MiniSurveyMonkey.Repo.OpenEndedRepository;
 import org.MiniSurveyMonkey.Repo.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 import org.MiniSurveyMonkey.Model.Choice;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -61,9 +61,17 @@ public class WebController {
 
     @GetMapping("/surveyor/PrintSurveys/surveyorPreview")
     public String surveyorPreview(Model model){
-        Survey survey = repository.findById(2);
+        Survey survey = repository.findById(1);
         model.addAttribute(survey);
         return "SurveyPreviewView";
+    }
+
+    @GetMapping("/user/surveyView")
+    public String answerSurvey(Model model, @PathVariable int surveyId){
+        Survey survey = repository.findById(surveyId);
+        model.addAttribute(survey);
+        return "SurveyView";
+
     }
 
     @GetMapping("/surveyor/SurveyCreator")
@@ -141,47 +149,18 @@ public class WebController {
         return "SurveyAddQuestions";
     }
 
-    @DeleteMapping("/survey/{surveyId}/close")
-    public void deleteSurvey(@PathVariable(value = "surveyId") int surveyId) {
-        repository.deleteById(surveyId);
-    }
-
-
     @PostMapping("/surveyor/{surveyId}/close")
-    public Survey closeAndSaveSurvey(@PathVariable(value = "surveyId") int surveyId) {
+    @ResponseBody // This annotation is needed to return JSON response
+    public ResponseEntity<String> closeAndSaveSurvey(@PathVariable(value = "surveyId") int surveyId) {
         Survey survey = repository.findById(surveyId);
-        survey.close();
-        repository.save(survey);
-        return survey;
+        if (survey != null) {
+            survey.close();
+            repository.save(survey);
+            return ResponseEntity.ok("Survey closed successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Survey not found.");
+        }
     }
 
 
-    /*
-    @PostMapping("/surveyor/{surveyId}/mcq")
-    public MultipleChoice addMcq(@PathVariable(value = "surveyId") int surveyId, @RequestBody MultipleChoice question){
-        Survey survey = repository.findById(surveyId);
-        mcqRepository.save(question);
-        survey.addQuestion(question);
-        repository.save(survey);
-        return question;
-    }
-
-    @PostMapping("/surveyor/{surveyId}/nrq")
-    public NumRange addNrq(@PathVariable(value = "surveyId") int surveyId, @RequestBody NumRange nrq){
-        Survey survey = repository.findById(surveyId);
-        nrqRepository.save(nrq);
-        survey.addQuestion(nrq);
-        repository.save(survey);
-        return nrq;
-    }
-
-    @PostMapping("/surveyor/{surveyId}/oeq")
-    public OpenEnded addOeq(@PathVariable(value = "surveyId") int surveyId, @RequestBody OpenEnded oeq){
-        Survey survey = repository.findById(surveyId);
-        oeqRepository.save(oeq);
-        survey.addQuestion(oeq);
-        repository.save(survey);
-        return oeq;
-    }
-     */
 }
