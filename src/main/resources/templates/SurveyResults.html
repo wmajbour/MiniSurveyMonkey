@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Survey Results</title>
+  <!-- Include Chart.js library -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
+
+<!-- Container for the charts -->
 <div style="max-width: 600px; margin: auto;">
   <canvas id="chartCanvas"></canvas>
 </div>
 
 <script>
+  // Sample data for demonstration purposes
+  const questionType = "num-range"; // Replace with actual question type (e.g., "num-range" or "multiple-choice")
+  const responseData = [3, 5, 2, 8, 4]; // Replace with actual response data
+
   // Function to create a histogram
   function createHistogram(data) {
     const ctx = document.getElementById('chartCanvas').getContext('2d');
@@ -68,31 +73,15 @@
     });
   }
 
-  // Fetch the survey results data from the server
-  $.ajax({
-    type: 'GET',
-    url: '/surveyor/survey-results', // Replace with the actual endpoint to fetch survey results
-    success: function (responseData) {
-      // Determine the question type from the response data
-      const questionType = responseData.questionType;
-      const responseValues = responseData.responseValues;
-
-      // Determine the question type and create the corresponding chart
-      if (questionType === "num-range") {
-        createHistogram(responseValues);
-      } else if (questionType === "multiple-choice") {
-        createPieChart(responseValues);
-      } else {
-        console.error("Unsupported question type");
-      }
-    },
-    error: function (xhr, status, error) {
-      console.error('Failed to fetch survey results. Status:', status, 'Error:', error);
-      console.log(xhr.responseText); // Log the response text for more details
-      alert('Failed to fetch survey results. See the console for more details.');
-    },
-  });
+  // Determine the question type and create the corresponding chart
+  if (questionType === "num-range") {
+    createHistogram(responseData);
+  } else if (questionType === "multiple-choice") {
+    createPieChart(responseData);
+  } else {
+    console.error("Unsupported question type");
+  }
 </script>
-</body>
 
+</body>
 </html>
