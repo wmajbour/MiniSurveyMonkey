@@ -1,8 +1,10 @@
 package org.MiniSurveyMonkey.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-import java.util.List;
 
 
 /**
@@ -28,10 +30,6 @@ public class NumRange extends Question {
      */
     @Column(name = "value_column")
     private int value;
-
-
-    @ElementCollection(targetClass = Float.class)
-    private List<Float> answers;
 
     @ManyToOne
     private Survey survey;
@@ -63,10 +61,6 @@ public class NumRange extends Question {
 
     public void setValue(int value) {
         this.value = value;
-    }
-
-    public void addAnswer(Float answer){
-        this.answers.add(answer);
     }
 
 }
