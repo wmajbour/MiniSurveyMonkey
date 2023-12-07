@@ -157,10 +157,10 @@ public class WebController {
 
     @PostMapping("/surveyor/{surveyId}/close")
     @ResponseBody
-    public ResponseEntity<String> closeAndSaveSurvey(@PathVariable(value = "surveyId") int surveyId) {
+    public String closeAndSaveSurvey(@PathVariable(value = "surveyId") int surveyId) {
         Survey survey = repository.findById(surveyId);
         survey.close();
         repository.save(survey);
-        return ResponseEntity.ok("Survey closed successfully.");
+        return "SurveyResults";
     }
 }
