@@ -68,37 +68,46 @@
       </td>
       <td>
         <a class="btn btn-primary" href="PrintSurveys/surveyorPreview">View</a>
-        <button class="btn btn-danger" th:onclick="'closeAndRemoveSurvey(' + ${survey.id} + ')'" >Close</button>
+        <button class="btn btn-danger" onclick="closeAndRemoveSurvey(${survey.id})">Close</button>
       </td>
     </tr>
     </tbody>
   </table>
 
   <script>
+
+    function redirectToSurveyView(surveyId) {
+      // Redirect the user to the surveyView page
+      window.location.href = 'surveyor/PrintSurveys/surveyorPreview';
+    }
+
     function closeAndRemoveSurvey(surveyId) {
+      // Use AJAX to send a request to close the survey
       $.ajax({
         type: 'POST',
         url: '/surveyor/' + surveyId + '/close',
         success: function () {
           // Find the survey element by ID
-          var surveyElement = $('#survey-' + surveyId);
+          var surveyElement = $('#survey' + surveyId);
 
           // Update the status text and styling
+
           surveyElement.find('td:nth-child(3)').html('<span style="color: red;">CLOSED</span>');
 
           alert('Survey closed successfully.');
 
           // Remove the "CLOSE" button
           surveyElement.find('td:last-child button').remove();
+          surveyElement.find('.survey-status').text('CLOSED').css('color', 'red');
+
         },
-        error: function (xhr, status, error) {
-          console.error('Failed to close the survey. Status:', status, 'Error:', error);
-          console.log(xhr.responseText); // Log the response text for more details
-          alert('Failed to close the survey. See the console for more details.');
+        error: function () {
+          alert('Failed to close the survey.');
         },
       });
     }
   </script>
+
 
 </div>
 </body>

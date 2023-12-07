@@ -9,14 +9,14 @@ import org.MiniSurveyMonkey.Repo.NumRangeRepository;
 import org.MiniSurveyMonkey.Repo.OpenEndedRepository;
 import org.MiniSurveyMonkey.Repo.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.MiniSurveyMonkey.Model.Choice;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -60,8 +60,8 @@ public class WebController {
     }
 
     @GetMapping("/surveyor/PrintSurveys/surveyorPreview")
-    public String surveyorPreview(Model model) {
-        Survey survey = repository.findById(2);
+    public String surveyorPreview(Model model){
+        Survey survey = repository.findById(1);
         model.addAttribute(survey);
         return "SurveyPreviewView";
     }
@@ -148,6 +148,12 @@ public class WebController {
         model.addAttribute(survey);
         return "SurveyAddQuestions";
     }
+
+    @DeleteMapping("/survey/{surveyId}/close")
+    public void deleteSurvey(@PathVariable(value = "surveyId") int surveyId) {
+        repository.deleteById(surveyId);
+    }
+
 
     @PostMapping("/surveyor/{surveyId}/close")
     @ResponseBody
