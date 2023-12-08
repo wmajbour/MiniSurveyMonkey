@@ -57,8 +57,8 @@ public class SurveyorController {
         surveyRepository.deleteById(surveyId);
     }
 
-    @PostMapping("/{surveyId}/close")
-    public String closeAndSaveSurvey(@PathVariable(value = "surveyId") String surveyId, Model model) {
+    @PostMapping("/close")
+    public String closeAndSaveSurvey(@RequestParam(value = "surveyId") String surveyId, Model model) {
         Survey survey = surveyRepository.findById(Integer.parseInt(surveyId));
         survey.close();
         surveyRepository.save(survey);
@@ -66,7 +66,7 @@ public class SurveyorController {
     }
 
     @GetMapping("/results")
-    public String viewResults(@PathVariable(value = "surveyId") String surveyId, Model model){
+    public String viewResults(@RequestParam(value = "surveyId") String surveyId, Model model){
         Survey survey = surveyRepository.findById(Integer.parseInt(surveyId));
         model.addAttribute("survey", survey);
         return "SurveyResutls";
