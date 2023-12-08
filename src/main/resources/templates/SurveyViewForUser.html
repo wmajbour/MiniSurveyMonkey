@@ -84,7 +84,7 @@
 <div>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="#" style="color: #343a40;">Mini-SurveyMonkey</a>
+            <a class="navbar-brand" href="#" style="color: #343a40;">MiniSurveyMonkey</a>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
@@ -97,7 +97,7 @@
     </nav>
 </div>
 <main>
-    <form id="survey-form" action="/surveys" method="POST">
+    <form id="survey-form" action="/user/submitSurvey" method="POST">
         <th:block th:each="question : ${survey.questions}">
             <th:block th:if="${question.type} == 'num-range'">
                 <label th:for="${question.type} + ${question.id}" th:text="${question.question}"></label>
@@ -108,7 +108,7 @@
                 <th:block th:each="choice: ${question.choices}">
                     <div>
                         <label th:for="${question.type} + ${choice.id}" th:text="${choice.choice}"></label>
-                        <input type="checkbox" th:id="${question.type} + ${choice.id}" th:name="${question.type} + ${choice.id}" th:value="${choice.choice}">
+                        <input type="checkbox" th:id="${question.type} + ${choice.id}" th:name="${question.type} + ${question.id} + ${choice.id}" th:value="${choice.choice}">
                     </div>
                 </th:block>
             </th:block>
@@ -121,7 +121,7 @@
     </form>
 </main>
 <footer>
-    <p class="footer-text">© 2023 Mini-SurveyMonkey. All rights reserved.</p>
+    <p class="footer-text">© 2023 MiniSurveyMonkey. All rights reserved.</p>
 </footer>
 </body>
 

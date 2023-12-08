@@ -62,13 +62,13 @@ public class MiniSurveyMonkey {
             repository.save(survey);
 
             var set3 = new HashSet<Choice>();
-            set3.add(new Choice("Hes ugly", true));
-            set3.add(new Choice("Braindead Zac Abuser", true));
-            set3.add(new Choice("Likes men", true));
+            set3.add(new Choice("Hes handsome", true));
+            set3.add(new Choice("Talented Zac player", true));
+            set3.add(new Choice("Loves everyone", true));
             var qs1 = new ArrayList<Question>();
-            MultipleChoice mcq3 = new MultipleChoice("Why is HJ stupid?", set3);
+            MultipleChoice mcq3 = new MultipleChoice("Why is HJ smart?", set3);
             qs1.add(mcq3);
-            Survey survey1 = new Survey("HJ is retarded", qs1);
+            Survey survey1 = new Survey("Why HJ is Awesome?", qs1);
             repository.save(survey1);
 
         };
