@@ -67,8 +67,8 @@
                         <td>
                             <form action="/user/surveyView" method="GET">
                                 <input type="hidden" th:value="${survey.id}" name="surveyId">
-                                <button th:if="${survey.open}" th:text="${survey.open}" type="submit" class="btn btn-secondary"></button><!--Open CLOSED-->
-                                <span th:unless="${survey.open}" th:text="${survey.open}"></span>
+                                <button th:if="${survey.open}" type="submit" class="btn btn-secondary">OPEN</button><!--Open CLOSED-->
+                                <span th:unless="${survey.open}">CLOSED</span>
                             </form>
                         </td>
                     </tr>

@@ -70,11 +70,19 @@
                             <form action="PrintSurveys/surveyorPreview" method="GET">
                                 <input type="hidden" th:value="${survey.id}" name="surveyId">
                                 <button type="submit" class="btn btn-primary">View</button>
-                            </form>  
-                            <form th:action="'surveyor/' + ${survey.id} + '/close'" method="POST">
-                                <input type="hidden" th:value="${survey.id}" name="surveyId">
-                                <button class="btn btn-danger" type="submit" th:onclick="'closeAndRemoveSurvey(' + ${survey.id} + ')'" >Close</button>
                             </form>
+                            <th:block th:if="${survey.open}">
+                            <form action="/surveyor/close" method="POST">
+                                <input type="hidden" th:value="${survey.id}" name="surveyId">
+                                <button class="btn btn-danger"  type="submit" th:onclick="'closeAndRemoveSurvey(' + ${survey.id} + ')'" >Close</button>
+                            </form>
+                            </th:block>
+                            <th:block th:unless="${survey.open}">
+                            <form action="/surveyor/results" method="GET">
+                                <input type="hidden" th:value="${survey.id}" name="surveyId">
+                                <button class="btn btn-success" type="submit">Results</button>
+                            </form>
+                            </th:block>
                         </td>
                     </tr>
                 </tbody>
@@ -93,8 +101,13 @@
                             var surveyElement = $('#survey-' + surveyId);
                             surveyElement.find('td:nth-child(3) span').text('CLOSED').css('color', 'red');
 
+                            var closeButton = surveyElement.find('td:last-child button');
+                            closeButton.text('Results');
+                            closeButton.removeClass('btn-danger').addClass('btn-success');
+
                             // Remove the "CLOSE" button
                             surveyElement.find('td:last-child button').remove();
+
 
                         },
                         error: function () {
@@ -102,6 +115,10 @@
                         },
                     });
                 }
+
+
+
+
 
             </script>
 
