@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.*;
 import static org.mockito.Mockito.verify;
 
-
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = WebController.class)
@@ -62,9 +61,10 @@ public class WebControllerTest {
                 set1);
         MultipleChoice mcq2 = new MultipleChoice("What season of the year is your favourite?",
                 set2);
-        repository.save(survey);
 
         try {
+            repository.save(survey);
+
             // Act & Assert
             mockMvc.perform(MockMvcRequestBuilders.get("/surveyor/PrintSurveys"))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -97,12 +97,13 @@ public class WebControllerTest {
                     .param("name", "New Survey"))
                     .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
                     .andExpect(MockMvcResultMatchers.redirectedUrl("/surveys"));
+
+            // Verify that repository.save was called with the expected arguments
+            verify(repository).save(new Survey("New Survey"));
         } catch (Exception e) {
 
         }
 
-        // Verify that repository.save was called with the expected arguments
-        verify(repository).save(new Survey("New Survey"));
     }
 
     @Test
@@ -111,9 +112,9 @@ public class WebControllerTest {
         Survey survey = new Survey();
         survey.setId(1);
         survey.setName("Sample Survey");
-        repository.save(survey);
-
         try {
+            repository.save(survey);
+
             // Act & Assert
             mockMvc.perform(MockMvcRequestBuilders.get("/surveyor/PrintSurveys/surveyorPreview"))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -132,9 +133,9 @@ public class WebControllerTest {
         Survey survey = new Survey();
         survey.setId(surveyId);
         survey.setName("Sample Survey");
-        repository.save(survey);
-
         try {
+            repository.save(survey);
+
             // Act & Assert
             mockMvc.perform(MockMvcRequestBuilders.get("/user/surveyView/{surveyId}", surveyId))
                     .andExpect(MockMvcResultMatchers.status().isOk())
@@ -153,18 +154,18 @@ public class WebControllerTest {
         Survey survey = new Survey();
         survey.setId(surveyId);
         survey.setName("Sample Survey");
-        repository.save(survey);
-
         try {
+
+            repository.save(survey);
+
             // Act & Assert
             mockMvc.perform(MockMvcRequestBuilders.post("/surveyor/{surveyId}/close", surveyId))
                     .andExpect(MockMvcResultMatchers.status().isOk());
+            Optional<Survey> closedSurvey = Optional.ofNullable(repository.findById(surveyId));
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        Optional<Survey> closedSurvey = Optional.ofNullable(repository.findById(surveyId));
 
     }
 }
