@@ -30,6 +30,14 @@ Azure deployment was reconfigured to take into account new classes and functiona
 
 Integration tests, along with updated UML and ER diagrams were added.
 
+### Milestone 2
+Completed link between front end and back end.
+
+Fixed tests that were failing.
+
+Created charts to map user responses.
+
+Updated kanban with new issues and closed completed issues. 
 
 ## UML Diagram and ER diagram
 
