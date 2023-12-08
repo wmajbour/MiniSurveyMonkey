@@ -30,7 +30,7 @@ Azure deployment was reconfigured to take into account new classes and functiona
 
 Integration tests, along with updated UML and ER diagrams were added.
 
-### Milestone 2
+### Milestone 3
 Completed link between front end and back end.
 
 Fixed tests that were failing.
